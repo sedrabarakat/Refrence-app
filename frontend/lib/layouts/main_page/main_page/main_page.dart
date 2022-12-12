@@ -2,7 +2,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frontend/layouts/main_page/states_mainpage.dart';
+import 'package:frontend/layouts/main_page/main_page/states_mainpage.dart';
 
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
