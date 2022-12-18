@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/modules/profiles/profile_cubit.dart';
+
 import 'package:frontend/shared/bloc_observer.dart';
 
 import 'layouts/main_page/main_page/cubit_main_page.dart';
 import 'layouts/main_page/main_page/main_page.dart';
 import 'modules/login.dart';
+import 'modules/profiles/expert_profile.dart';
+import 'modules/profiles/normuser_profile.dart';
 import 'shared/network/local/shared_prefrence.dart';
 import 'shared/network/remote/dio_helper.dart';
 void main() async {
@@ -23,19 +27,22 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final Widget start;
-  MyApp({super.key,required this.start});
+
+  MyApp({super.key, required this.start});
 
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context)=>cubit()..getexpert(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: start,
-      ),
-    );
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (BuildContext context) =>
+      cubit()..getexpert(),),
+      BlocProvider(create: (BuildContext context) => profilecubit())
+    ], child: MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home:start,
+      //start,
+    ),);
   }
 }
 

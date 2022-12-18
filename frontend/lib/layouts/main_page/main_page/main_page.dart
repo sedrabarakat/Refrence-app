@@ -12,7 +12,6 @@ import 'cubit_main_page.dart';
 
 class First extends StatelessWidget {
 
-
   @override
   Widget build(BuildContext context) {
     GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
@@ -24,7 +23,12 @@ class First extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: Colors.deepPurple,
               actions: [
-                IconButton(onPressed: (){}, icon:Icon(Icons.search))
+                IconButton(onPressed: (){}, icon:Icon(Icons.search)),
+                MaterialButton(onPressed: (){},child: Row(children: [
+                  Icon( Icons.door_front_door_rounded,color: Colors.grey[300],),
+                  SizedBox(width: 10,),
+                  Text('LOGOUT',style: TextStyle(color: Colors.grey[300]),),
+                ],),)
               ],
             ),
             bottomNavigationBar: CurvedNavigationBar(

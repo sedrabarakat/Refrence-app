@@ -5,11 +5,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/layouts/main_page/main_page/states_mainpage.dart';
 
+import '../../../models/get_all_expert.dart';
 import '../../../modules/favorite.dart';
 import '../../../modules/home.dart';
-import '../../../modules/profile.dart';
+import '../../../modules/profiles/profile.dart';
 import 'package:frontend/shared/network/remote/dio_helper.dart';
 import 'package:frontend/models/login_model.dart';
+import 'package:frontend/modules/profiles/profile.dart';
 
 
 class cubit extends Cubit<layout_state>{
@@ -66,6 +68,8 @@ class cubit extends Cubit<layout_state>{
     ).then((value){
       expertlist= jsonDecode(value.data);
       print(expertlist);
+     // print(expertlist![0]['hour_charging']);
+
       emit(Success_getexpert());
     } ).catchError((error){
       print(error.toString());

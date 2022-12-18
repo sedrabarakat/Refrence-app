@@ -1,23 +1,23 @@
 
 
 import 'dart:convert';
-
+/*
 class all_expert{
   List <get_expert>all=[];
 
   all_expert.fromJson(Map<String,dynamic>json){
     json.forEach((key, value) {all.add(get_expert.fromjson(value));});
   }
-}
+}*/
 
-class get_expert{
+class get_expert_model{
   int? expert_id;
   String? country;
   String? city;
   String? street;
   int? hour_charging;
   user ?normal_user;
-  get_expert.fromjson(Map<String,dynamic>json){
+  get_expert_model.fromjson(Map<String,dynamic>json){
     expert_id=json['expert_id'];
     country=json['country'];
     city=json['city'];
@@ -37,14 +37,14 @@ class user{
   String ?updated_at;
   String ?created_at;
   user.fromjson(Map<String,dynamic>json){
-    user_id=json['user_id'];
-    first_name=json['first_name'];
-    last_name=json['last_name'];
-    image=json['image'];
-    wallet=json['wallet'];
-    is_expert=json['is_expert'];
-    updated_at=json['updated_at'];
-    created_at=json['created_at'];
+    user_id=json['user_id'].tojson();
+    first_name=json['first_name'].tojson();
+    last_name=json['last_name'].tojson();
+    image=json['image'].tojson();
+    wallet=json['wallet'].tojson();
+    is_expert=json['is_expert'].tojson();
+    updated_at=json['updated_at'].tojson();
+    created_at=json['created_at'].tojson();
 
   }
 

@@ -167,6 +167,7 @@ class login extends StatelessWidget {
                                       password: passwordcontroller.text).then((value){
                                     if(token!=null){
                                       cache_helper.saveData(key: 'token', value: token);
+                                      token=cubit.get(context).loginmodel?.token;
                                       Navigator.push(context, MaterialPageRoute(
                                           builder: (context)=>First()));}
                                     else{
