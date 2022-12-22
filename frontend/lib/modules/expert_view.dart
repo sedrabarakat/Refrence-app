@@ -10,18 +10,18 @@ import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart'as http;
 
-import '../models/get_expert_view.dart';
+import '../models/expertclass.dart';
 
 
 
 
-class Experprofile extends StatefulWidget {
-  const Experprofile({Key? key}) : super(key: key);
+class Expert_view extends StatefulWidget {
+  const Expert_view({Key? key}) : super(key: key);
 
   @override
-  State<Experprofile> createState() => _ExperprofileState();
+  State<Expert_view> createState() => _ExperprofileState();
 }
-class _ExperprofileState extends State<Experprofile> {
+class _ExperprofileState extends State<Expert_view> {
   Expertclass ?expertclass;
   @override
 

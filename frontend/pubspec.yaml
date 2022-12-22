@@ -88,6 +88,8 @@ flutter:
       - assets/image/team.png
       - assets/image/conntact.jpg
       - assets/image/work.webp
+      - assets/image/well.jpg
+      - assets/image/profile.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -9,6 +9,8 @@ import 'package:frontend/modules/profiles/profiles_states.dart';
 Widget User_profile(){
 
     var scaffoldkey= GlobalKey<ScaffoldState>();
+    var first_namecontroller=TextEditingController();
+    var last_namecontroller=TextEditingController();
     var phonecontroller=TextEditingController();
     var walletcontroller=TextEditingController();
     return BlocConsumer<profilecubit,profile_state>(
@@ -18,6 +20,11 @@ Widget User_profile(){
         File? imageFile=profilecubit.get(context).imageFile;
         double height = MediaQuery.of(context).size.height;
         double width = MediaQuery.of(context).size.width;
+        Map<String,dynamic>?myprofile=profilecubit.get(context).profile;
+        //phonecontroller.text=myprofile?['phone_numbers']['phone_number'];
+        walletcontroller.text=(myprofile?['wallet']).toString();
+        first_namecontroller.text=myprofile?['first_name'];
+        last_namecontroller.text=myprofile?['last_name'];
         return Scaffold(
           key: scaffoldkey,
           backgroundColor: Colors.grey[200],
@@ -63,7 +70,7 @@ Widget User_profile(){
                                   child: Row(mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       const SizedBox(width: 25,),
-                                      const Text('Sedra Barakat',
+                                       Text('${myprofile?['first_name']} ${myprofile?['last_name']}',
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 1,
                                         style: TextStyle(
@@ -73,7 +80,99 @@ Widget User_profile(){
                                       IconButton(onPressed: (){}, icon: const Icon(Icons.edit))
                                     ],),
                                 ),),
-                              const SizedBox(height: 25,),
+                              const SizedBox(height: 15,),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        //(210, 170, 148,251 )
+                                          color: Color.fromARGB(210, 150, 140,251 ),
+                                          blurRadius: 24.0,
+                                          offset:Offset(0,8)
+                                      ),]),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextFormField(
+                                    onChanged: (value){},
+                                    keyboardType: TextInputType.text,
+                                    controller: first_namecontroller,
+                                    cursorColor: Colors.deepPurpleAccent ,
+                                    decoration: InputDecoration(
+                                      filled: true,
+                                      fillColor: Colors.grey[100],
+                                      prefixIcon: const Icon(Icons.person,color:Colors.deepPurpleAccent ,),
+                                      labelText: 'first name',
+                                      labelStyle: const TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w400
+                                      ),
+                                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(color: Colors.deepPurple),
+                                        borderRadius: BorderRadius.circular(50),),
+                                      enabledBorder: OutlineInputBorder(borderSide:const BorderSide(
+                                        color: Colors.white,),
+                                          borderRadius: BorderRadius.circular(50)
+                                      ),
+
+                                    ),
+                                    validator: (value){
+                                      if(value==null||value.isEmpty) {
+                                        return 'this field shouldn\'t be empty';}
+                                      else {
+                                        return null;}
+                                    },
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 15,),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        //(210, 170, 148,251 )
+                                          color: Color.fromARGB(210, 150, 140,251 ),
+                                          blurRadius: 24.0,
+                                          offset:Offset(0,8)
+                                      ),]),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextFormField(
+                                    onChanged: (value){},
+                                    keyboardType: TextInputType.text,
+                                    controller: last_namecontroller,
+                                    cursorColor: Colors.deepPurpleAccent ,
+                                    decoration: InputDecoration(
+                                      filled: true,
+                                      fillColor: Colors.grey[100],
+                                      prefixIcon: const Icon(Icons.person,color:Colors.deepPurpleAccent ,),
+                                      labelText: 'last name',
+                                      labelStyle: const TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w400
+                                      ),
+                                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(color: Colors.deepPurple),
+                                        borderRadius: BorderRadius.circular(50),),
+                                      enabledBorder: OutlineInputBorder(borderSide:const BorderSide(
+                                        color: Colors.white,),
+                                          borderRadius: BorderRadius.circular(50)
+                                      ),
+
+                                    ),
+                                    validator: (value){
+                                      if(value==null||value.isEmpty) {
+                                        return 'this field shouldn\'t be empty';}
+                                      else {
+                                        return null;}
+                                    },
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 15,),
                               Container(
                                 decoration: const BoxDecoration(
                                     boxShadow: [
@@ -119,7 +218,7 @@ Widget User_profile(){
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 25,),
+                              const SizedBox(height: 15,),
                               Container(
                                 decoration: const BoxDecoration(
                                     boxShadow: [
@@ -159,10 +258,18 @@ Widget User_profile(){
 
                                 ),
                               ),
-                              const SizedBox(height: 25,),
+                              const SizedBox(height: 15,),
                               Container(
                                 width: 200,
-                                child: ElevatedButton(onPressed: (){},
+                                child: ElevatedButton(onPressed: (){
+                                  profilecubit.get(context).updateprofile(
+                                    image: imageFile,
+                                    first_name: first_namecontroller.text,
+                                    last_name:last_namecontroller.text ,
+                                    phone_numbers: phonecontroller.text,
+
+                                  );
+                                },
                                     child:Text('Update Profile',
                                       style:TextStyle(fontSize: 16) ,),
                                     style: ElevatedButton.styleFrom(
@@ -226,7 +333,9 @@ Widget User_profile(){
                                     backgroundColor: Colors.deepPurple[100],
                                         (context) => Container(
                                       decoration:  BoxDecoration(
-                                          color: Colors.deepPurple[200],
+                                          gradient: LinearGradient(
+                                              colors: [Colors.deepPurple.shade300,Colors.deepPurple.shade100,Colors.deepPurple.shade300]
+                                          ),
                                           borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(50),
                                               topRight: Radius.circular(50)

@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../layouts/main_page/main_page/cubit_main_page.dart';
 import '../layouts/main_page/main_page/states_mainpage.dart';
 import '../shared/components/components.dart';
+import 'expert_view.dart';
 
 class home extends StatelessWidget {
 
@@ -22,17 +23,17 @@ class home extends StatelessWidget {
           return ConditionalBuilder(
             condition: expertlist!.length>0,
             builder:(context)=> InkWell(
-              focusColor:Colors.pink,
-             // onTap: (){
-             //   Navigator.push(context, MaterialPageRoute(builder: (context)=>expert_view()));
-             // },
+              focusColor: Colors.blue,
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Expert_view()));
+              },
               child: ListView.separated(
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context,index)=> cell(expertlist![index]['normal_user']),
                   separatorBuilder:(context,index)=>SizedBox() ,
                   itemCount: expertlist.length),
             ),
-            fallback: (context)=>Center(child: CircularProgressIndicator()),
+            fallback: (context)=>Center(child:CircularProgressIndicator(color: Colors.deepPurple,backgroundColor: Colors.blue[900],),),
           );
         }
 

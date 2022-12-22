@@ -23,3 +23,15 @@ class Error_getexpert extends layout_state{
   String error;
   Error_getexpert(this.error);
 }
+class change_fromcamera_state  extends layout_state{}
+class change_fromgallery_state  extends layout_state{}
+
+class Success_sign_state extends layout_state{}
+
+class Error_sign_state extends layout_state{
+  String error;
+  Error_sign_state(this.error);
+}
+
+class Loading_sign_state extends layout_state{}
+

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 
 class dio_helper{
   static Dio?dio;
@@ -20,12 +21,14 @@ class dio_helper{
 
   static Future<Response>postData({
     required String url,
-    required Map<String,dynamic>data,
+    required Map<dynamic,dynamic>data,
     String?token,
     Map<String,dynamic>?query,
 
   }) async {
     dio!.options.headers={
+      'Accept':'application/json',
+      'Content-Type':'application/json',
       'Authorization':token,
     };
     return await dio!.post(
@@ -40,14 +43,63 @@ class dio_helper{
     String?token,
   }) async{
     dio!.options.headers={
-      'Authorization':token
+      'Accept':'application/json',
+      'Content-Type':'application/json',
+      'Authorization': token
     };
     return await dio!.get(url,
         queryParameters: query);
 
   }
 
+  static Future<Response>putData({
+    required String url,
+    required Map<String,dynamic>data,
+    required String token,
+    Map<String,dynamic>?query,
+})async{
+    dio!.options.headers={
+      'Accept':'application/json',
+      'Content-Type':'application/json',
+      'Authorization': token
+    };
+    return await dio!.put(url
+        ,data: data,
+        queryParameters: query);
 
+  }
+
+
+  static Future<dynamic>deletedata({
+    required String url,
+    required String token,
+})async{
+    dio!.options.headers={
+      'Accept':'application/json',
+      'Content-Type':'application/json',
+      'Authorization': token
+    };
+
+    return await dio!.delete(url);
+  }
+  static Future<Response>postdata({
+    required String url,
+    required List<dynamic>data,
+    String?token,
+    Map<String,dynamic>?query,
+
+  }) async {
+    dio!.options.headers={
+      'Accept':'application/json',
+      'Content-Type':'application/json',
+      'Authorization':token,
+    };
+    return await dio!.post(
+      url,
+      data: data,
+      queryParameters: query,
+    );
+  }
 
 
 
