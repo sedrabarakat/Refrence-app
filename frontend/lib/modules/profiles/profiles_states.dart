@@ -36,6 +36,15 @@ class Error_Updateprofile_state extends profile_state{
   Error_Updateprofile_state(this.error);
 
 }
+class dropdown_state extends profile_state{
+
+}
+class addfiled extends profile_state{
+
+}
+class removefield extends profile_state{
+
+}
 
 
 

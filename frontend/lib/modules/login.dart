@@ -2,15 +2,15 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:frontend/modules/Sign_up_user.dart';
+import 'package:frontend/modules/sign_up/Sign_up_user.dart';
 import 'package:frontend/shared/components/constatnt.dart';
 import '../layouts/main_page/main_page/cubit_main_page.dart';
 import '../layouts/main_page/main_page/main_page.dart';
 import '../layouts/main_page/main_page/states_mainpage.dart';
 import 'package:frontend/models/login_model.dart';
 import 'package:frontend/shared/network/local/shared_prefrence.dart';
-import 'package:frontend/modules/Sign_up_Expert.dart';
-import 'package:frontend/modules/Sign_up_user.dart';
+import 'package:frontend/modules/sign_up/Sign_up_Expert.dart';
+import 'package:frontend/modules/sign_up/Sign_up_user.dart';
 class login extends StatelessWidget {
 
   @override
@@ -130,6 +130,26 @@ class login extends StatelessWidget {
                           ),
 
                         ),
+                        onFieldSubmitted: (value){
+                            if(formkey.currentState!.validate()){
+                              cubit.get(context).login_post(
+                                  email: emailcontroller.text,
+                                  password: passwordcontroller.text).then((value){
+                                if((cubit.get(context).loginmodel?.token)!=null){
+                                  cache_helper.saveData(key: 'token', value: cubit.get(context).loginmodel?.token);
+                                  token=cubit.get(context).loginmodel?.token;
+                                  //print(token);
+                                  Navigator.push(context, MaterialPageRoute(
+                                      builder: (context)=>First()));}
+                                else{
+                                  print('need another email');
+                                }
+                              }).catchError((error){
+                                print(error.toString());
+                              });
+                            }
+                          },
+
                         validator: (value){
                           if(value==null||value.isEmpty) {
                             return 'Please Fill That Field';}

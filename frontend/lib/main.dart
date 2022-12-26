@@ -7,11 +7,14 @@ import 'package:frontend/shared/bloc_observer.dart';
 
 import 'layouts/main_page/main_page/cubit_main_page.dart';
 import 'layouts/main_page/main_page/main_page.dart';
-import 'modules/Sign_up_user.dart';
+import 'modules/sign_up/Sign_up_user.dart';
+import 'modules/experment.dart';
 import 'modules/favorite.dart';
 import 'modules/login.dart';
 
-import 'modules/Sign_up_Expert.dart';
+import 'modules/sign_up/Sign_up_Expert.dart';
+import 'modules/profiles/normuser_profile.dart';
+import 'modules/profiles/profile.dart';
 import 'shared/network/local/shared_prefrence.dart';
 import 'shared/network/remote/dio_helper.dart';
 void main() async {
@@ -39,11 +42,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (BuildContext context) => cubit()..getexpert(),),
-      BlocProvider(create: (BuildContext context) => profilecubit()..getprofile())
+
     ], child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:login(),
-      //start,
+      home:start,
+//start
     ),);
   }
 }

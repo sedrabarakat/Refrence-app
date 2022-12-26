@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/shared/components/constatnt.dart';
 import 'package:frontend/shared/network/remote/dio_helper.dart';
-import '../layouts/main_page/main_page/cubit_main_page.dart';
-import '../layouts/main_page/main_page/main_page.dart';
-import '../layouts/main_page/main_page/states_mainpage.dart';
+import '../../layouts/main_page/main_page/cubit_main_page.dart';
+import '../../layouts/main_page/main_page/main_page.dart';
+import '../../layouts/main_page/main_page/states_mainpage.dart';
 import 'package:frontend/models/login_model.dart';
 import 'package:frontend/shared/network/local/shared_prefrence.dart';
 
-import '../shared/styles/styles.dart';
+import '../../shared/styles/styles.dart';
 class Sign_up_Expert extends StatelessWidget {
   var lastnamecontroller = TextEditingController();
   var emailController = TextEditingController();
@@ -28,8 +28,7 @@ class Sign_up_Expert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var emailcontroller=TextEditingController();
-    var passwordcontroller=TextEditingController();
+
     var key =GlobalKey<FormState>();
     var scaffoldkey=GlobalKey<ScaffoldState>();
 
@@ -121,7 +120,16 @@ class Sign_up_Expert extends StatelessWidget {
                                                         cubit.get(context).getFromGallery();
                                                       },
                                                       icon:Icon(Icons.photo_library,size: 30,)),
-                                                )
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.all(20.0),
+                                                  child: IconButton(
+                                                      onPressed: (){
+                                                        cubit.get(context).uploadImage(cubit.get(context).imageFile);
+                                                      },
+                                                      icon:Icon(Icons.cloud_upload,size: 30,)),
+                                                ),
+
                                               ],),)).closed.then((value){
                                         isOpen=false;  });
                                       isOpen=true;}
@@ -373,7 +381,7 @@ class Sign_up_Expert extends StatelessWidget {
                           },
                           decoration: d.copyWith(
                             prefixIcon: const Icon(
-                              Icons.currency_bitcoin_rounded,
+                              Icons.access_time_filled,
                               color: Colors.deepPurple,
                             ),
                             labelText: 'hour charge',
@@ -406,7 +414,8 @@ class Sign_up_Expert extends StatelessWidget {
                                 city: citycontroller.text,
                                 phone: phoneController.hashCode,
                                 hour: hourchargingcontroller.hashCode,
-                                street: streetcontroller.text).then((value){
+                                street: streetcontroller.text,
+                            ).then((value){
                               if((cubit.get(context).sign_expert_token)!=null){
                                 cache_helper.saveData(key: 'token', value: cubit.get(context).sign_expert_token);
                                 token=cubit.get(context).sign_expert_token;

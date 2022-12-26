@@ -25,12 +25,14 @@ Widget cell(expertlist){
         child: Row(mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(height: 100,
+            Container(
+                height: 100,
                 width: 100,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(60),
+                    borderRadius: BorderRadius.circular(80),
                     image:  DecorationImage(
-                        image: NetworkImage('${expertlist['image']}'))
+
+                        image: NetworkImage('http://10.0.2.2:8000/storage/${expertlist['image']}'))
                 )),
             SizedBox(width: 5,),
             Expanded(
@@ -73,3 +75,11 @@ Widget cell(expertlist){
     ),
   );
 }//Colors.cyan.shade300,Colors.purple.shade200,Colors.deepPurple.shade300
+
+
+
+TextEditingController defalutcontroller(){
+  var controller=TextEditingController();
+  return controller;
+}
+

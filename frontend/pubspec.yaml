@@ -56,6 +56,8 @@ dependencies:
   get: ^4.6.5
   intl_phone_field: ^3.1.0
   http: ^0.13.5
+  cached_network_image: ^3.2.3
+  lottie: ^2.1.0
 
 
 dev_dependencies:
@@ -90,6 +92,10 @@ flutter:
       - assets/image/work.webp
       - assets/image/well.jpg
       - assets/image/profile.png
+      - assets/animation/animation.json
+      - assets/animation/consultation.json
+      - assets/animation/anim.json
+      - assets/animation/business.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/layouts/main_page/main_page/states_mainpage.dart';
 import 'package:frontend/modules/profiles/profile_cubit.dart';
+import 'package:frontend/modules/profiles/profiles_states.dart';
 import 'package:frontend/shared/network/local/shared_prefrence.dart';
 import '../layouts/main_page/main_page/cubit_main_page.dart';
 import 'login.dart';
@@ -38,6 +39,7 @@ class favorite extends StatelessWidget {
               child: MaterialButton(
                 onPressed: (){
                   {
+
 
                   }
                 },

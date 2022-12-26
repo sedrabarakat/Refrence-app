@@ -4,6 +4,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 
 import '../layouts/main_page/main_page/cubit_main_page.dart';
@@ -33,7 +34,7 @@ class home extends StatelessWidget {
                   separatorBuilder:(context,index)=>SizedBox() ,
                   itemCount: expertlist.length),
             ),
-            fallback: (context)=>Center(child:CircularProgressIndicator(color: Colors.deepPurple,backgroundColor: Colors.blue[900],),),
+            fallback: (context)=>Center(child:Lottie.asset('assets/animation/business.json')),
           );
         }
 

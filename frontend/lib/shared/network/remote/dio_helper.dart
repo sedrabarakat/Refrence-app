@@ -21,7 +21,7 @@ class dio_helper{
 
   static Future<Response>postData({
     required String url,
-    required Map<dynamic,dynamic>data,
+    required Map<String,dynamic>data,
     String?token,
     Map<String,dynamic>?query,
 
@@ -37,6 +37,26 @@ class dio_helper{
       queryParameters: query,
     );
   }
+
+  static Future<Response>postsign({
+    required String url,
+    required FormData data,
+    String?token,
+    Map<String,dynamic>?query,
+
+  }) async {
+    dio!.options.headers={
+      'Accept':'application/json',
+      'Content-Type':'application/json',
+      'Authorization':token,
+    };
+    return await dio!.post(
+      url,
+      data: data,
+      queryParameters: query,
+    );
+  }
+
   static Future<Response> getData({
     required String url,
     Map<String,dynamic>?query,

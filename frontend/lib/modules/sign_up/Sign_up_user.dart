@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/shared/components/constatnt.dart';
 import 'package:frontend/shared/network/remote/dio_helper.dart';
-import '../layouts/main_page/main_page/cubit_main_page.dart';
-import '../layouts/main_page/main_page/main_page.dart';
-import '../layouts/main_page/main_page/states_mainpage.dart';
+import '../../layouts/main_page/main_page/cubit_main_page.dart';
+import '../../layouts/main_page/main_page/main_page.dart';
+import '../../layouts/main_page/main_page/states_mainpage.dart';
 import 'package:frontend/models/login_model.dart';
 import 'package:frontend/shared/network/local/shared_prefrence.dart';
 
-import '../shared/styles/styles.dart';
+import '../../shared/styles/styles.dart';
 class Sign_up_User extends StatelessWidget {
   var lastnamecontroller = TextEditingController();
   var emailController = TextEditingController();

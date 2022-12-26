@@ -43,23 +43,29 @@ class profilecubit extends Cubit<profile_state>{
         emit(change_fromcamera_state());
     }
   }
-  Map<String,dynamic>?profile;
-  void getprofile() async{
+  Map<String,dynamic>profile={};
+  int begin=0;
+  String ?firstname;
+  String ?lastname;
+  void getprofile() async {
     emit(Loading_getprofile_state());
     await dio_helper.getData(
       url: 'myprofile',
       token: 'Bearer ${cache_helper.getData(key:'token')}'
     ).then((value){
       profile= jsonDecode(value.data);
-      print(profile);
-      // print(profile!['first_name']);
-
+      begin=profile['is_expert'];
+      firstname=profile['first_name'];
+      lastname=profile['last_name'];
+      print(firstname);
+      print(lastname);
       emit(Success_getprofile_state());
     } ).catchError((error){
       print(error.toString());
       emit(Error_getprofile_state(error.toString()));
     });
   }
+
 
   void updateprofile({
     String ?first_name,
@@ -83,6 +89,22 @@ class profilecubit extends Cubit<profile_state>{
         },
         token: cache_helper.getData(key:'token'));
 
+  }
+
+  bool is_drop=false;
+  void drop_down(){
+    is_drop=!is_drop;
+    emit(dropdown_state());
+
+  }
+  int counter=1;
+  void addtext(){
+    counter+=1;
+    emit(addfiled());
+  }
+  void removetext(){
+    counter-=1;
+    emit(removefield());
   }
 
 

@@ -35,3 +35,5 @@ class Error_sign_state extends layout_state{
 
 class Loading_sign_state extends layout_state{}
 
+class upload_image_state extends layout_state{}
+

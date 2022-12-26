@@ -2,13 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/layouts/main_page/main_page/states_mainpage.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../../models/expertclass.dart';
-import 'package:frontend/shared/network/local/shared_prefrence.dart';
 import '../../../modules/favorite.dart';
 import '../../../modules/home.dart';
 import '../../../modules/profiles/profile.dart';
@@ -63,6 +61,7 @@ class cubit extends Cubit<layout_state>{
   }
   String?sign_expert_token;
   List<dynamic>?sign;
+  Dio dio = new Dio();
   Future sign_up_expert({
     required String name,
     required String lastname,
@@ -73,23 +72,24 @@ class cubit extends Cubit<layout_state>{
     required String street,
     required int phone,
     required int hour,
+    var Image,
 })async{
     emit(Loading_sign_state());
-    return await dio_helper.postData(
+    return await dio_helper.postsign(
         url:'singup_expert',
-        data: {
-      'first_name':name,
-      'last_name':lastname,
-      'email':email,
-      'password':password,
-      'phone_number':phone,
-      'device_name': 'win',
-      'country': country,
-      'city':city,
-      'street':street,
-      'country_number':963,
-      'hour_charging': hour,
-    }).then((value){
+        data:await FormData.fromMap({"first_name":name,
+          'last_name':lastname,
+          'email':email,
+          'password':password,
+          'phone_number':phone,
+          'device_name': 'win',
+          'country': country,
+          'city':city,
+          'street':street,
+          'country_number':963,
+          'hour_charging': hour,
+          'image': await MultipartFile.fromFile(imageFile!.path, filename:imageFile!.path.split('/').last),})
+    ).then((value){
       sign=jsonDecode(value.data);
       print(sign);
       sign_expert_token=sign![1];
@@ -111,9 +111,9 @@ class cubit extends Cubit<layout_state>{
     int ? phone,
   })async{
     emit(Loading_sign_state());
-    return await dio_helper.postData(
+    return await dio_helper.postsign(
         url:'singup_normal_user',
-        data: {
+        data: FormData.fromMap({
           'first_name':name,
           'last_name':lastname,
           'email':email,
@@ -121,7 +121,8 @@ class cubit extends Cubit<layout_state>{
           'phone_number':phone,
           'device_name': 'win',
           'country_number':963,
-        }).then((value){
+          'image': await MultipartFile.fromFile(imageFile!.path, filename:imageFile!.path.split('/').last)
+        })).then((value){
       signuser=jsonDecode(value.data);
       print(signuser);
       sign_user_token=signuser![1];
@@ -174,8 +175,18 @@ class cubit extends Cubit<layout_state>{
     );
     if (pickedFile != null) {
       imageFile = File(pickedFile.path);
+
       emit(change_fromgallery_state());
     }
+  }
+
+  Future uploadImage(File) async {
+    String fileName = File.path.split('/').last;
+    FormData imageData = FormData.fromMap({
+      "image": await MultipartFile.fromFile(File.path, filename:File.path.split('/').last),
+    });
+        emit(upload_image_state());
+        return imageData;
   }
 
 
