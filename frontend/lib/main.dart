@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/modules/profiles/profile_cubit.dart';
-
+import 'package:frontend/modules/search_id.dart';
 import 'package:frontend/shared/bloc_observer.dart';
-
-
 import 'layouts/main_page/main_page/cubit_main_page.dart';
 import 'layouts/main_page/main_page/main_page.dart';
-import 'modules/sign_up/Sign_up_user.dart';
-import 'modules/experment.dart';
-import 'modules/favorite.dart';
+import 'modules/BUTTON.dart';
 import 'modules/login.dart';
-
-import 'modules/sign_up/Sign_up_Expert.dart';
-import 'modules/profiles/normuser_profile.dart';
-import 'modules/profiles/profile.dart';
+import 'modules/search.dart';
 import 'shared/network/local/shared_prefrence.dart';
 import 'shared/network/remote/dio_helper.dart';
 void main() async {
@@ -41,11 +34,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
-      BlocProvider(create: (BuildContext context) => cubit()..getexpert(),),
-
+      BlocProvider(create: (BuildContext context) => cubit()..getexpert()..myfav(),),
+      BlocProvider(create: (BuildContext context) => profilecubit()..getprofile()..get_booked_date(),),
     ], child: MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:start,
+      home:start
 //start
     ),);
   }

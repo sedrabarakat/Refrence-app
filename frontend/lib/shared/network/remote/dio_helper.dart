@@ -57,6 +57,7 @@ class dio_helper{
     );
   }
 
+
   static Future<Response> getData({
     required String url,
     Map<String,dynamic>?query,
@@ -102,9 +103,10 @@ class dio_helper{
 
     return await dio!.delete(url);
   }
-  static Future<Response>postdata({
+
+  static Future<Response>delete({
     required String url,
-    required List<dynamic>data,
+    required Map<String,dynamic>data,
     String?token,
     Map<String,dynamic>?query,
 
@@ -114,7 +116,7 @@ class dio_helper{
       'Content-Type':'application/json',
       'Authorization':token,
     };
-    return await dio!.post(
+    return await dio!.delete(
       url,
       data: data,
       queryParameters: query,
@@ -122,6 +124,23 @@ class dio_helper{
   }
 
 
+
+  static Future<Response>getSearch({
+    required String url,
+    required Map<String,dynamic> query,
+    Map<String,dynamic>?data,
+   required String token,
+  }) async {
+    dio!.options.headers={
+      'Accept':'application/json',
+      'Content-Type':'application/json',
+      'Authorization':token,
+    };
+    return await dio!.get(
+      url,
+      queryParameters: query,
+    );
+  }
 
 
 

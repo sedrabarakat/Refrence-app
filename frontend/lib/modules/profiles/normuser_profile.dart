@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +21,6 @@ Widget User_profile(myprofile){
     var last_namecontroller=TextEditingController();
     var phonecontroller=TextEditingController();
     var walletcontroller=TextEditingController();
-    var consultationcontroller=TextEditingController();
-    int counter=0;
 
     return BlocConsumer<profilecubit,profile_state>(
       listener: (context,profile_state){},
@@ -31,10 +30,10 @@ Widget User_profile(myprofile){
         bool isOpen=false;
         File? imageFile=profilecubit.get(context).imageFile;
         if(myprofile.length>0){
-          phonecontroller.text=(myprofile['phone_numbers']).toString(); //here
+          phonecontroller.text=(myprofile['phone_numbers'][0]['phone_number']).toString(); //here
           walletcontroller.text=myprofile['wallet'].toString();
-          first_namecontroller.text=myprofile['first_name'];
-          last_namecontroller.text=myprofile['last_name'];
+          first_namecontroller.text=myprofile['first_name'].toString();
+          last_namecontroller.text=myprofile['last_name'].toString();
         }
 
         return ConditionalBuilder(
@@ -324,9 +323,10 @@ Widget User_profile(myprofile){
                                 color: Colors.deepPurple,
                                 borderRadius: BorderRadius.circular(140),
                               ),
-                              child: imageFile==null?Image.asset('http://10.0.2.2:8000/storage/${myprofile['image']}'
-                                ,fit: BoxFit.cover,
-                              ):
+                              child: imageFile==null?CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${myprofile['image']}',
+                                progressIndicatorBuilder: (context, url, downloadProgress) => CircularProgressIndicator(value: downloadProgress.progress),
+                                errorWidget: (context, url, error) => Icon(Icons.error,size: 60,),fit: BoxFit.cover, ):
+
                               Image.file(
                                 imageFile,
                                 fit: BoxFit.cover,

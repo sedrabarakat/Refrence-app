@@ -28,10 +28,10 @@ class profile extends StatelessWidget {
             return ConditionalBuilder(
              condition:myprofile.length>0,
              builder: (context) {
-               if (p == 1)
-                 return expert_profile(myprofile);
-               else {
+               if (p == 0)
                  return User_profile(myprofile);
+              else  {
+                 return expert_profile(myprofile);
                }
              }  ,
               fallback: (context)=>Center(child: Lottie.asset('assets/animation/animation.json')),

@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:frontend/modules/sign_up/Sign_up_user.dart';
 import 'package:frontend/shared/components/constatnt.dart';
 import '../layouts/main_page/main_page/cubit_main_page.dart';
@@ -21,7 +22,8 @@ class login extends StatelessWidget {
     var formkey =GlobalKey<FormState>();
     return BlocConsumer<cubit,layout_state>(
       listener: (context,layout_state){
-        if(State is Success_login_state){}
+          if(State is Error_login_state){
+        }
       },
       builder: (context,layout_state){
         bool is_secure=cubit.get(context).issecure;
@@ -193,8 +195,6 @@ class login extends StatelessWidget {
                                     else{
                                       print('need another email');
                                     }
-                                  }).catchError((error){
-                                    print(error.toString());
                                   });
                                 }
                               },

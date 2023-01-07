@@ -121,14 +121,7 @@ class Sign_up_Expert extends StatelessWidget {
                                                       },
                                                       icon:Icon(Icons.photo_library,size: 30,)),
                                                 ),
-                                                Padding(
-                                                  padding: const EdgeInsets.all(20.0),
-                                                  child: IconButton(
-                                                      onPressed: (){
-                                                        cubit.get(context).uploadImage(cubit.get(context).imageFile);
-                                                      },
-                                                      icon:Icon(Icons.cloud_upload,size: 30,)),
-                                                ),
+
 
                                               ],),)).closed.then((value){
                                         isOpen=false;  });
@@ -273,6 +266,9 @@ class Sign_up_Expert extends StatelessWidget {
                             return 'Please Fill that Field';
                           if(value.length<=9)
                             return 'Your number is too short';
+                          if(value.length>12)
+                            return 'Your number is too Long';
+
                         },
                         onChanged: (value) {
                         },
@@ -422,9 +418,6 @@ class Sign_up_Expert extends StatelessWidget {
                                 print(token);
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context)=>First()));}
-                              else{
-                                print('need another email');
-                              }
                             }).catchError((error){
                               print(error.toString());
                             });

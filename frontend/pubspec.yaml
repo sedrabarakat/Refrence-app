@@ -48,7 +48,7 @@ dependencies:
   image_picker: ^0.8.6
   io: ^1.0.3
   provider: ^6.0.4
-  fluttertoast: ^8.1.1
+  fluttertoast: ^8.1.2
   introduction_screen: ^3.1.1
   email_validator: ^2.1.17
   flutter_screenutil: ^5.6.0
@@ -58,6 +58,8 @@ dependencies:
   http: ^0.13.5
   cached_network_image: ^3.2.3
   lottie: ^2.1.0
+  flutter_custom_clippers: ^2.1.0
+
 
 
 dev_dependencies:
@@ -93,9 +95,26 @@ flutter:
       - assets/image/well.jpg
       - assets/image/profile.png
       - assets/animation/animation.json
-      - assets/animation/consultation.json
       - assets/animation/anim.json
       - assets/animation/business.json
+      - assets/image/rell.png
+      - assets/image/IT-Vendor-Support.jpg
+      - assets/image/search.png
+      - assets/image/key.webp
+      - assets/image/files.jpg
+      - assets/animation/search-users.json
+      - assets/animation/clients.json
+      - assets/image/time.jpg
+      - assets/image/blue.jpeg
+      - assets/animation/1business.json
+      - assets/animation/business.json
+      - assets/animation/rating.json
+      - assets/animation/loading.json
+      - assets/image/Sky.jpeg
+      - assets/image/la.png
+      - assets/image/rating.png
+      - assets/animation/rate.json
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

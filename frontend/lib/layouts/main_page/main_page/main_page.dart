@@ -21,19 +21,21 @@ class First extends StatelessWidget {
     return BlocConsumer<cubit,layout_state>(
       listener: (context,layoutstate){},
       builder: (context,layoutstate){
+        var index=cubit.get(context).index;
         return Scaffold(
             backgroundColor: Colors.blue.shade50,
             appBar: AppBar(
-              backgroundColor: Colors.deepPurple,
+              elevation: 0,
+              backgroundColor: (index==0)?Color.fromARGB(255, 49, 35, 131):
+              (index==1)? Color.fromARGB(255, 102, 39, 203):
+              (index==2)?Colors.deepPurple:
+              (index==3)? Color.fromARGB(255, 20, 36, 87):Colors.deepPurple,
               actions: [
-                IconButton(onPressed: (){}, icon:Icon(Icons.search)),
                 MaterialButton(onPressed: (){
                   cache_helper.removeData(key: 'token').then((value){
                     print('token killed');
                     Navigator.push(context, MaterialPageRoute(builder:(context)=> login()));
-
                   });
-
                 },child: Row(children: [
                   Icon( Icons.door_front_door_rounded,color: Colors.grey[300],),
                   SizedBox(width: 10,),
@@ -57,7 +59,7 @@ class First extends StatelessWidget {
                 Icon(Icons.favorite,color: Colors.purple,size: 35),
                 Icon(Icons.home,color: Colors.purple,size: 35,),
                 Icon(Icons.person,color: Colors.purple,size: 35),
-
+                Icon(Icons.search,color: Colors.purple,size: 35),
               ],
             ),
             body: cubit.get(context).list[cubit.get(context).index]
