@@ -60,11 +60,12 @@ Widget expert_profile_two(myprofile) {
                             child: Row(
                               children: [
                                 Container(height: height / 9, width: width / 4.6,
+                                  clipBehavior: Clip.hardEdge,
                                   decoration: BoxDecoration(
                                     color: Colors.deepPurple,
                                     borderRadius: BorderRadius.circular(70),
                                   ),
-                                  child:  CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${myprofile?['image']}',
+                                  child:  CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${myprofile?['image']}',fit: BoxFit.cover,
                                     progressIndicatorBuilder: (context, url, downloadProgress) =>
                                         CircularProgressIndicator(value: downloadProgress.progress),
                                     errorWidget: (context, url, error) => Icon(Icons.error),

@@ -5,6 +5,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/layouts/main_page/main_page/cubit_main_page.dart';
+import 'package:frontend/modules/login.dart';
 import 'package:frontend/modules/profiles/profile_cubit.dart';
 import 'package:frontend/modules/profiles/profiles_states.dart';
 import 'package:frontend/shared/network/local/shared_prefrence.dart';
@@ -21,6 +22,10 @@ Widget User_profile(myprofile){
     var last_namecontroller=TextEditingController();
     var phonecontroller=TextEditingController();
     var walletcontroller=TextEditingController();
+    var passwordcontroller=TextEditingController();
+    var emailcontroller=TextEditingController();
+    var key=GlobalKey<FormState>();
+    var key1=GlobalKey<ScaffoldState>();
 
     return BlocConsumer<profilecubit,profile_state>(
       listener: (context,profile_state){},
@@ -80,7 +85,7 @@ Widget User_profile(myprofile){
                                 Padding(
                                   padding: const EdgeInsets.only(top: 30),
                                   child: Expanded(
-                                    child:Text('${profilecubit.get(context).firstname} ${profilecubit.get(context).lastname}',
+                                    child:Text('${myprofile['first_name'].toString()} ${ last_namecontroller.text=myprofile['last_name'].toString()}',
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
                                       style: TextStyle(
@@ -290,7 +295,161 @@ Widget User_profile(myprofile){
                                 const SizedBox(height: 10,),
                                 Container(
                                   width: 200,
-                                  child: ElevatedButton(onPressed: (){},
+                                  child: ElevatedButton(onPressed: (){
+                                    if(isOpen==false){
+                                      scaffoldkey.currentState?.showBottomSheet(
+                                          backgroundColor: Colors.deepPurple[100],
+                                              (context) => Container(
+                                              decoration:  BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                      colors: [Colors.deepPurple.shade300,Colors.deepPurple.shade200,Colors.deepPurple.shade300]
+                                                  ),
+                                                  borderRadius: const BorderRadius.only(
+                                                      topLeft: Radius.circular(50),
+                                                      topRight: Radius.circular(50)
+                                                  )
+                                              ),
+                                              width: double.infinity,height: height/2.8,
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(20.0),
+                                                child: Column(children: [
+                                                  Container(
+                                                    alignment: Alignment.topCenter,
+
+                                                    decoration: const BoxDecoration(),
+                                                    child: TextFormField(
+                                                      validator:(value){
+                                                        if(value==null||value.isEmpty) {
+                                                          return 'this field shouldn\'t be empty';}
+                                                        else {
+                                                          return null;}
+                                                      },
+                                                      onChanged: (value) {},
+                                                      keyboardType: TextInputType.text,
+                                                      controller: emailcontroller,
+                                                      onFieldSubmitted: (value) {
+                                                        //valuefromtext=value;
+                                                        //profilecubit.get(context).addConsultation(Consultation:value.toString() );
+                                                      },
+                                                      cursorColor: Colors.deepPurpleAccent,
+                                                      decoration: InputDecoration(
+                                                        filled: true,
+                                                        fillColor: Colors.grey[100],
+                                                        prefixIcon: const Icon(Icons.edit,
+                                                          color: Colors.deepPurpleAccent,),
+                                                        labelText: 'Email',
+                                                        labelStyle: const TextStyle(
+                                                            color: Colors.black87,
+                                                            fontSize: 18,
+                                                            fontWeight: FontWeight.w400
+                                                        ),
+                                                        border: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.circular(
+                                                                50)),
+                                                        focusedBorder: OutlineInputBorder(
+                                                          borderSide: const BorderSide(
+                                                              color: Colors.deepPurple),
+                                                          borderRadius: BorderRadius.circular(
+                                                              50),),
+                                                        enabledBorder: OutlineInputBorder(
+                                                            borderSide: const BorderSide(
+                                                              color: Colors.white,),
+                                                            borderRadius: BorderRadius.circular(
+                                                                50)
+                                                        ),
+                                                      ),),
+                                                  ),
+                                                  SizedBox(height: 20,),
+                                                  Container(
+                                                    alignment: Alignment.topCenter,
+                                                    decoration: const BoxDecoration(),
+                                                    child: TextFormField(
+                                                      validator:(value){
+                                                        if(value==null||value.isEmpty) {
+                                                          return 'this field shouldn\'t be empty';}
+                                                        else {
+                                                          return null;}
+                                                      },
+                                                      onChanged: (value) {},
+                                                      keyboardType: TextInputType.text,
+                                                      controller: passwordcontroller,
+                                                      onFieldSubmitted: (value) {
+                                                        //valuefromtext=value;
+                                                        //profilecubit.get(context).addConsultation(Consultation:value.toString() );
+                                                      },
+                                                      cursorColor: Colors.deepPurpleAccent,
+                                                      decoration: InputDecoration(
+                                                        filled: true,
+                                                        fillColor: Colors.grey[100],
+                                                        prefixIcon: const Icon(Icons.password,
+                                                          color: Colors.deepPurpleAccent,),
+                                                        labelText: 'Password',
+                                                        labelStyle: const TextStyle(
+                                                            color: Colors.black87,
+                                                            fontSize: 18,
+                                                            fontWeight: FontWeight.w400
+                                                        ),
+                                                        border: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.circular(
+                                                                50)),
+                                                        focusedBorder: OutlineInputBorder(
+                                                          borderSide: const BorderSide(
+                                                              color: Colors.deepPurple),
+                                                          borderRadius: BorderRadius.circular(
+                                                              50),),
+                                                        enabledBorder: OutlineInputBorder(
+                                                            borderSide: const BorderSide(
+                                                              color: Colors.white,),
+                                                            borderRadius: BorderRadius.circular(
+                                                                50)
+                                                        ),
+                                                      ),),
+                                                  ),
+                                                  SizedBox(height: 20,),
+                                                  Row(mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      Container(
+                                                        decoration:  BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(50),
+                                                            boxShadow: const [
+                                                              BoxShadow(
+                                                                  color: Color.fromARGB(210, 170, 148,251 ),
+                                                                  blurRadius: 30.0,
+                                                                  offset:Offset(0,1)
+                                                              )]),
+                                                        child: ElevatedButton(onPressed: (){
+                                                           profilecubit.get(context).deleteprofile(
+                                                               email: emailcontroller.text, password: passwordcontroller.text).then((value){
+                                                             isOpen=false;
+                                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+
+                                                              });
+
+                                                           },
+                                                          child:Text('OK Delete',
+                                                            style:TextStyle(fontSize: 16) ,),
+                                                          style: ElevatedButton.styleFrom(
+                                                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                                                            primary: Colors.deepPurpleAccent,
+                                                            elevation: 15,
+                                                          ),),
+                                                      ),
+
+                                                    ],
+                                                  )
+
+
+
+
+                                                ],),
+                                              ))).closed.then((value){
+                                        isOpen=false;  });
+                                      isOpen=true;}
+                                    else{
+
+                                        Navigator.pop(context);
+                                        isOpen=false;           }
+                                  },
                                       child:Text('Delete Your Profile',
                                         style:TextStyle(fontSize: 16) ,),
                                       style: ElevatedButton.styleFrom(

@@ -111,6 +111,7 @@ class cubit extends Cubit<layout_state>{
      // expertmodel=jsonDecode(value.data[0]);
       emit(Success_sign_state());
     }).catchError((error){
+      
       print(error.toString());
       Fluttertoast.showToast(
           msg: "The email has already been taken",
@@ -237,6 +238,15 @@ class cubit extends Cubit<layout_state>{
       //getexpert_byConsultation_id(id:Consultationlist[0]['id_of_consultations']);
       emit(Success_Consultationsearch_state());
     }).catchError((error){
+      Fluttertoast.showToast(
+          msg: "NO Such Consultation",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red[900],
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
       print(error.toString());
       emit(Error_Consultationsearch_state(error));
     });}
@@ -245,7 +255,7 @@ class cubit extends Cubit<layout_state>{
   Future expert_search({
     required String expert_name
   })async{
-    emit(Loading_Consultationsearch_state());
+    emit(Loading_expertsearch_state());
     return await dio_helper.getSearch(
         url:'experts/find',
         query: {
@@ -255,10 +265,19 @@ class cubit extends Cubit<layout_state>{
     ).then((value){
       searchexpertlist=jsonDecode(value.data);
       print(searchexpertlist);
-      emit(Success_Consultationsearch_state());
+      emit(Success_expertsearch_state());
     }).catchError((error){
       print(error.toString());
-      emit(Error_Consultationsearch_state(error));
+      Fluttertoast.showToast(
+          msg: "NO Such Expert",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red[900],
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      emit(Error_Consultationsearch_state(error.toString()));
     });}
 
 
@@ -347,7 +366,7 @@ void change_color1(){
       emit(Error_allconsultation_state(error.toString()));
     });
   }
-
+ 
 
   
 

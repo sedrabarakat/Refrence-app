@@ -27,6 +27,8 @@ Widget expert_profile(myprofile){
     var description=TextEditingController();
     var namevalidate=GlobalKey<FormState>();
     var descriptionvalidate=GlobalKey<FormState>();
+    var emailController=TextEditingController();
+        var passwordcontroller=TextEditingController();
     return BlocProvider(
       create: (context)=>profilecubit()..getprofile()..get_booked_date() ,
       child:  BlocConsumer<profilecubit,profile_state>(
@@ -813,7 +815,9 @@ Widget expert_profile(myprofile){
                                     const SizedBox(height: 10,),
                                     Container(
                                       width: 200,
-                                      child: ElevatedButton(onPressed: (){},
+                                      child: ElevatedButton(onPressed: (){
+
+                                      },
                                           child:Text('Delete My Profile',
                                             style:TextStyle(fontSize: 16) ,),
                                           style: ElevatedButton.styleFrom(

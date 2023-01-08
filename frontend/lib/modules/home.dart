@@ -35,7 +35,7 @@ class home extends StatelessWidget {
                       clipper: WaveClipperTwo(flip: true,),
                       child: Container(height: height/4,
                       decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage('assets/image/la.png'),fit: BoxFit.fill)
+                        image: DecorationImage(image: AssetImage('assets/image/la.png'),fit: BoxFit.cover)
                       ),)),
                 ConditionalBuilder(
                     condition: all_consultation.length>0,

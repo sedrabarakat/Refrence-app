@@ -9,79 +9,84 @@ import '../../modules/search_id.dart';
 
 Widget cell(expertlist){
 
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-      height: 120,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
-        gradient: LinearGradient(
-            colors: [Colors.cyan.shade200,Colors.deepPurple.shade300]
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.8),
-            spreadRadius: 2,
-            blurRadius: 9,
-            offset: Offset(0, 5), // changes position of shadow
+  return GestureDetector(
+    /*onTap: (){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>classname(expertlist['expert_id'])))
+    },*/
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 120,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          gradient: LinearGradient(
+              colors: [Colors.cyan.shade200,Colors.deepPurple.shade300]
           ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-                height: 100,
-                width: 100,
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35),
-                ),
-              child: CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${expertlist['image']}',
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    CircularProgressIndicator(value: downloadProgress.progress),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.8),
+              spreadRadius: 2,
+              blurRadius: 9,
+              offset: Offset(0, 5), // changes position of shadow
             ),
-            SizedBox(width: 5,),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('${expertlist['first_name']} ${expertlist['last_name']}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20
-                        )),
-                    SizedBox(height: 10,),
-                    Text('Psychological counselor',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 15
-                        )),
-                    SizedBox(height: 10,),
-                    Row(children: [
-                      Icon(Icons.star_rate,size: 18,color: Colors.deepPurple,),
-                      SizedBox(width: 5,),
-                      Text('rated as 4 stars ',
-                          style: TextStyle(
-                              color: Colors.deepPurple.shade900,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18
-                          ))
-                    ],)
-                  ],),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  height: 100,
+                  width: 100,
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(35),
+                  ),
+                child: CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${expertlist['image']}',
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      CircularProgressIndicator(value: downloadProgress.progress),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
-            )
-          ],),
+              SizedBox(width: 5,),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('${expertlist['first_name']} ${expertlist['last_name']}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20
+                          )),
+                      SizedBox(height: 10,),
+                      Text((expertlist['consultations']!=null)?'${(expertlist['consultations'][0]['type_of_consulatation']['name_of_consultations']).toString()}':'Tap here to see details',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15
+                          )),
+                      SizedBox(height: 10,),
+                      Row(children: [
+                        Icon(Icons.star_rate,size: 18,color: Colors.deepPurple,),
+                        SizedBox(width: 5,),
+                        Text('rated as ${expertlist['rating']} stars ',
+                            style: TextStyle(
+                                color: Colors.deepPurple.shade900,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18
+                            ))
+                      ],)
+                    ],),
+                ),
+              )
+            ],),
+        ),
       ),
     ),
   );
@@ -287,58 +292,63 @@ Widget Consultation(SearchConsultation,context){
 
 Widget by_idcell(searchexpertlist){
 
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-    child: Container(
-      height: 100,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
-        gradient: LinearGradient(
-            colors: [Colors.cyan.shade200,Colors.deepPurple.shade300,]
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.8),
-            spreadRadius: 2,
-            blurRadius: 9,
-            offset: Offset(0, 5), // changes position of shadow
+  return GestureDetector(
+    /*onTap: (){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>classname(id:searchexpertlist['expert_id'])));
+    },*/
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+      child: Container(
+        height: 100,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          gradient: LinearGradient(
+              colors: [Colors.cyan.shade200,Colors.deepPurple.shade300,]
           ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 100,
-              width: 100,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${searchexpertlist['expert']['normal_user']['image']}',fit: BoxFit.cover,
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    CircularProgressIndicator(value: downloadProgress.progress),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.8),
+              spreadRadius: 2,
+              blurRadius: 9,
+              offset: Offset(0, 5), // changes position of shadow
             ),
-            SizedBox(width: 5,),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Text('${searchexpertlist['expert']['normal_user']['first_name']} ${searchexpertlist['expert']['normal_user']['last_name']}',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20
-                      )),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${searchexpertlist['expert']['normal_user']['image']}',fit: BoxFit.cover,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      CircularProgressIndicator(value: downloadProgress.progress),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
-            )
-          ],),
+              SizedBox(width: 5,),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text('${searchexpertlist['expert']['normal_user']['first_name']} ${searchexpertlist['expert']['normal_user']['last_name']}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20
+                        )),
+                  ),
+                ),
+              )
+            ],),
+        ),
       ),
     ),
   );
@@ -407,79 +417,78 @@ Widget Consultation_view(all_consultation,index,context){
   );
 }
 
-Widget favcell(expertlist){
+Widget favcell(expertlist,context,index){
 
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-      height: 120,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
-        gradient: LinearGradient(
-            colors: [Colors.deepPurple.shade100,Colors.deepPurple.shade200,Colors.deepPurple.shade300,Colors.deepPurple.shade400,Colors.deepPurple.shade500]), boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.8),
-            spreadRadius: 2,
-            blurRadius: 9,
-            offset: Offset(0, 5), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 100,
-              width: 100,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(35),
-              ),
-              child: CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${expertlist['expert']['normal_user']['image']}',
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    CircularProgressIndicator(value: downloadProgress.progress),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              ),
+  return GestureDetector(
+   /* onTap: (){
+
+    (value) =>   Navigator.push(context, MaterialPageRoute(builder: (context)=>Expert_view(id: expertlist['expert_id'])));
+    },*/
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 120,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          gradient: LinearGradient(
+              colors: [Colors.deepPurple.shade100,Colors.deepPurple.shade200,Colors.deepPurple.shade300,Colors.deepPurple.shade400,Colors.deepPurple.shade500]), boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.8),
+              spreadRadius: 2,
+              blurRadius: 9,
+              offset: Offset(0, 5), // changes position of shadow
             ),
-            SizedBox(width: 5,),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('${expertlist['expert']['normal_user']['first_name']} ${expertlist['expert']['normal_user']['last_name']}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20
-                        )),
-                    SizedBox(height: 10,),
-                    Text('Psychological counselor',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 15
-                        )),
-                    SizedBox(height: 10,),
-                    Row(children: [
-                      Icon(Icons.star_rate,size: 18,color: Colors.deepPurple,),
-                      SizedBox(width: 5,),
-                      Text('rated as 4 stars ',
-                          style: TextStyle(
-                              color: Colors.deepPurple.shade900,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18
-                          ))
-                    ],)
-                  ],),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(35),
+                ),
+                child: CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${expertlist['expert']['normal_user']['image']}',
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      CircularProgressIndicator(value: downloadProgress.progress),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
-            )
-          ],),
+              SizedBox(width: 5,),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('${expertlist['expert']['normal_user']['first_name']} ${expertlist['expert']['normal_user']['last_name']}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20
+                          )),
+
+                      SizedBox(height: 10,),
+                      Row(children: [
+                        Icon(Icons.star_rate,size: 18,color: Colors.deepPurple,),
+                        SizedBox(width: 5,),
+                        Text('rated as 4 stars ',
+                            style: TextStyle(
+                                color: Colors.deepPurple.shade900,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18
+                            ))
+                      ],)
+                    ],),
+                ),
+              )
+            ],),
+        ),
       ),
     ),
   );

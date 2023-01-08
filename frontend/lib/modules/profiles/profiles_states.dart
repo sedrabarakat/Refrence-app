@@ -23,17 +23,17 @@ class Error_getprofile_state extends profile_state{
   Error_getprofile_state(this.error);
 }
 
-class Loading_Updateprofile_state extends profile_state{
+class Loading_Deleteprofile_state extends profile_state{
 
 }
 
-class Success_Updateprofile_state extends profile_state{
+class Success_Deleteprofile_state extends profile_state{
 
 }
 
-class Error_Updateprofile_state extends profile_state{
+class Error_Deleteprofile_state extends profile_state{
   String error;
-  Error_Updateprofile_state(this.error);
+  Error_Deleteprofile_state(this.error);
 
 }
 class dropdown_state extends profile_state{

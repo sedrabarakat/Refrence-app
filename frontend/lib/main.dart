@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
-      BlocProvider(create: (BuildContext context) => cubit()..getexpert()..myfav(),),
+      BlocProvider(create: (BuildContext context) => cubit()..getexpert(),),
       BlocProvider(create: (BuildContext context) => profilecubit()..getprofile()..get_booked_date(),),
     ], child: MaterialApp(
       debugShowCheckedModeBanner: false,

@@ -80,7 +80,7 @@ class profilecubit extends Cubit<profile_state>{
     String ?city,
     String ?street,
 })async{
-    emit(Loading_Updateprofile_state());
+
     await dio_helper.putData(url:'update_account',
         data: {
          'first_name':first_name,
@@ -278,7 +278,23 @@ class profilecubit extends Cubit<profile_state>{
   }
 
 
-  
+  Future deleteprofile({
+    required String email,
+    required String password
+  })async{
+    emit(Loading_Deleteprofile_state());
+    return await dio_helper.delete(url: 'delete_user', data: {
+      'email':email,
+      'password':password
+    },token: 'Bearer ${cache_helper.getData(key:'token')}' ,).then((value){
+       emit(Success_Deleteprofile_state());
+      print(value.data);
+    }).catchError((error){
+      print(error.toString());
+      emit(Error_Deleteprofile_state(error.toString()));
+    });
+
+  }
 
 
 

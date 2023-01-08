@@ -46,11 +46,11 @@ class favorite extends StatelessWidget {
                       child: ListView.separated(
                         shrinkWrap: true,
                           physics: BouncingScrollPhysics(),
-                          itemBuilder: (context,index)=> favcell(fav[index]),
+                          itemBuilder: (context,index)=> favcell(fav[index],context,index),
                           separatorBuilder:(context,index)=>SizedBox() ,
                           itemCount: fav.length),
                     ),
-                    fallback: (context)=>Center(child:Lottie.asset('assets/animation/rating.json')),
+                    fallback: (context)=>Center(child:Lottie.asset('assets/animation/rate.json')),
                   ),
                 ],
               ),

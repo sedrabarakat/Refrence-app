@@ -47,6 +47,15 @@ class Error_Consultationsearch_state extends layout_state{
 
 class Loading_Consultationsearch_state extends layout_state{}
 
+class Success_expertsearch_state extends layout_state{}
+
+class Error_expertsearch_state extends layout_state{
+  String error;
+  Error_expertsearch_state(this.error);
+}
+
+class Loading_expertsearch_state extends layout_state{}
+
 class changecolor_state extends layout_state{}
 
 class Success_Search_state extends layout_state{}

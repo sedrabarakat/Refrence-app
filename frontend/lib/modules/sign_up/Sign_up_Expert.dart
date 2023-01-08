@@ -266,7 +266,7 @@ class Sign_up_Expert extends StatelessWidget {
                             return 'Please Fill that Field';
                           if(value.length<=9)
                             return 'Your number is too short';
-                          if(value.length>12)
+                          if(value.length>10)
                             return 'Your number is too Long';
 
                         },
@@ -297,6 +297,10 @@ class Sign_up_Expert extends StatelessWidget {
                         validator: (value) {
                           if(value==null||value.isEmpty)
                             return 'please fill that field';
+                          if(value.length<3)
+                            return 'Your Last Name of city is too Short';
+                          if(value.length>30)
+                            return 'Your Last Name of city is too Long';
                           else
                             return null;
                         },
@@ -321,8 +325,11 @@ class Sign_up_Expert extends StatelessWidget {
                         validator: (value) {
                           if(value==null||value.isEmpty)
                             return 'please fill that field';
-                          else
-                            return null;
+                          if(value.length<3)
+                            return 'Your Last Name of city is too Short';
+                          if(value.length>30)
+                            return 'Your Last Name of city is too Long';
+                          else return null;
                         },
                         decoration: d.copyWith(
                             labelText: 'City',
@@ -345,8 +352,12 @@ class Sign_up_Expert extends StatelessWidget {
                         validator:(value) {
                           if(value==null||value.isEmpty)
                             return 'please fill that field';
-                          else
-                            return null;
+                          if(value.length<3)
+                            return 'Your Last Name of street is too Short';
+                          if(value.length>30)
+                            return 'Your Last Name of street is too Long';
+                          else return null;
+
                         },
                         decoration: d.copyWith(
                             labelText: 'Street',
@@ -371,8 +382,10 @@ class Sign_up_Expert extends StatelessWidget {
                               return 'please fill that field';
                             if(value==0)
                               return 'put another value please';
-                            else
-                              return null;
+
+
+                            else return null;
+
 
                           },
                           decoration: d.copyWith(

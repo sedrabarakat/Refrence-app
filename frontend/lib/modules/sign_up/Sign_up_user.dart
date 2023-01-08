@@ -258,7 +258,7 @@ class Sign_up_User extends StatelessWidget {
                             return 'Please Fill that Field';
                           if(value.length<=9)
                             return 'Your number is too short';
-                          if(value.length>12)
+                          if(value.length>10)
                             return 'Your number is too Long';
 
                         },

@@ -94,6 +94,7 @@ class dio_helper{
   static Future<dynamic>deletedata({
     required String url,
     required String token,
+    required Map<String,dynamic>data,
 })async{
     dio!.options.headers={
       'Accept':'application/json',
@@ -101,7 +102,7 @@ class dio_helper{
       'Authorization': token
     };
 
-    return await dio!.delete(url);
+    return await dio!.delete(url,data: data);
   }
 
   static Future<Response>delete({
