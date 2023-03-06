@@ -134,7 +134,7 @@ class Sign_up_User extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.text,
                         cursorColor: Colors.deepPurpleAccent,
@@ -148,7 +148,7 @@ class Sign_up_User extends StatelessWidget {
                             return 'your Name is too Long';
                           else return null;
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'First Name',
                             prefixIcon: Icon(
                               Icons.person,
@@ -161,7 +161,7 @@ class Sign_up_User extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.text,
                         cursorColor: Colors.deepPurpleAccent,
@@ -175,7 +175,7 @@ class Sign_up_User extends StatelessWidget {
                             return 'Your Last Name is too Long';
                           else return null;
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'Last name',
                             prefixIcon: Icon(
                               Icons.person,
@@ -189,7 +189,7 @@ class Sign_up_User extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         cursorColor: Colors.deepPurpleAccent,
@@ -202,7 +202,7 @@ class Sign_up_User extends StatelessWidget {
                           else {
                             return null;}
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                           labelText: 'Email',
                           prefixIcon: Icon(
                             Icons.email,
@@ -218,7 +218,7 @@ class Sign_up_User extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         obscureText: isSecure,
                         keyboardType: TextInputType.visiblePassword,
@@ -232,7 +232,7 @@ class Sign_up_User extends StatelessWidget {
                           else
                             return null;
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                           labelText: 'Password',
                           prefixIcon: Icon(
                             Icons.lock,
@@ -250,7 +250,7 @@ class Sign_up_User extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         controller:phoneController,
                         validator: (value){
@@ -266,7 +266,7 @@ class Sign_up_User extends StatelessWidget {
                         },
                         keyboardType: TextInputType.phone,
                         cursorColor: Colors.deepPurpleAccent ,
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'Phone',
                             prefixIcon: Icon(
                               Icons.phone,

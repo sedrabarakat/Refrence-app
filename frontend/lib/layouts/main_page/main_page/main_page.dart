@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/layouts/main_page/main_page/states_mainpage.dart';
 import 'package:frontend/shared/network/local/shared_prefrence.dart';
+import 'package:frontend/widgets/agora.dart';
+import 'package:get/get.dart';
 
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,9 +34,11 @@ class First extends StatelessWidget {
               (index==3)? Color.fromARGB(255, 20, 36, 87):Colors.deepPurple,
               actions: [
                 MaterialButton(onPressed: (){
-                  cache_helper.removeData(key: 'token').then((value){
-                    print('token killed');
-                    Navigator.push(context, MaterialPageRoute(builder:(context)=> login()));
+                  cubit.get(context).logout().then((value){
+                    cache_helper.removeData(key: 'token').then((value){
+                      print('token killed');
+                      Navigator.push(context, MaterialPageRoute(builder:(context)=> login()));
+                    });
                   });
                 },child: Row(children: [
                   Icon( Icons.door_front_door_rounded,color: Colors.grey[300],),
@@ -44,9 +48,9 @@ class First extends StatelessWidget {
               ],
             ),
             bottomNavigationBar: CurvedNavigationBar(
-
               key: _bottomNavigationKey,
-              backgroundColor: Colors.blue.shade50,height: 50,
+              backgroundColor: (index==2)?Color.fromARGB(255, 207, 194, 232):Colors.blue.shade50,
+              height: 50,
 
               index:cubit.get(context).index,
               onTap: (int value){
@@ -62,6 +66,11 @@ class First extends StatelessWidget {
                 Icon(Icons.search,color: Colors.purple,size: 35),
               ],
             ),
+          /*  floatingActionButton: FloatingActionButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Agora()));
+              },child: Icon(Icons.video_call),
+            ),*/
             body: cubit.get(context).list[cubit.get(context).index]
         );
       },

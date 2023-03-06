@@ -29,6 +29,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
   flutter:
     sdk: flutter
 
@@ -46,6 +47,7 @@ dependencies:
   conditional_builder_null_safety: ^0.0.6
   hexcolor: ^3.0.1
   image_picker: ^0.8.6
+  intl_phone_number_input: ^0.7.2
   io: ^1.0.3
   provider: ^6.0.4
   fluttertoast: ^8.1.2
@@ -59,6 +61,17 @@ dependencies:
   cached_network_image: ^3.2.3
   lottie: ^2.1.0
   flutter_custom_clippers: ^2.1.0
+  agora_uikit: ^1.1.1
+  rating_dialog: ^2.0.4
+  flutter_rating_bar: ^4.0.1
+  flash: ^2.0.5
+  awesome_snackbar_content: ^0.1.0
+  ai_awesome_message: ^3.0.0
+  motion_toast: ^2.6.5
+  week_day_picker: ^1.0.0
+  day_picker: ^2.1.1
+  just_the_tooltip: ^0.0.12
+
 
 
 

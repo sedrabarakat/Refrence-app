@@ -295,8 +295,33 @@ class profilecubit extends Cubit<profile_state>{
     });
 
   }
+String? FreeTime_error;
+Future Add_freeTimes({
+  required String day,
+  required String start,
+  required String end,
+})async{
+    emit(Loading_addFreetime_state());
+    dio_helper.postData(url: 'add_free_time',
+        token:'Bearer ${cache_helper.getData(key:'token')}',
+        data: {
+      'day_of_free':day,
+      'start_time':start,
+      'end_time':end
+        }
+    ).then((value){
+       emit(Success_addFreetime_state());
 
+    }).catchError((error){
+      Map <String,dynamic>?errors;
+      errors=jsonDecode(error.response.data);
+      FreeTime_error=errors?['message'];
+      print(FreeTime_error);
+      emit(Error_addFreetime_state(error.toString()));
 
+    });
+    
+}
 
 
 }

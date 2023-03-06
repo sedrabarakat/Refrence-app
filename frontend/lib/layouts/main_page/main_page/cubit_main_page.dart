@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -367,7 +367,14 @@ void change_color1(){
     });
   }
  
-
+Future logout()async{
+    emit(Loading_logout());
+  return await dio_helper.postData(url: 'logout',token:'Bearer ${cache_helper.getData(key:'token')}' ).then((value){
+    emit(Success_logout());
+  }).catchError((error){
+    emit(Error_logout(error.toString()));
+  });
+}
   
 
 

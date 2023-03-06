@@ -108,11 +108,12 @@ Widget expert_profile_two(myprofile) {
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
                                           Container(
+                                            clipBehavior: Clip.hardEdge,
                                             height: 100,width: 100,
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(70),
                                               color: Colors.deepPurple,),
-                                            child: CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${booked_date[index]['normal_user']['image']}',
+                                            child: CachedNetworkImage(imageUrl: 'http://10.0.2.2:8000/storage/${booked_date[index]['normal_user']['image']}',fit: BoxFit.cover,
                                               progressIndicatorBuilder: (context, url, downloadProgress) =>
                                                   CircularProgressIndicator(value: downloadProgress.progress),
                                               errorWidget: (context, url, error) => Icon(Icons.error),

@@ -98,3 +98,12 @@ class Error_allconsultation_state extends layout_state{
   String error;
   Error_allconsultation_state(this.error);
 }
+
+class Loading_logout extends layout_state{}
+
+class Success_logout extends layout_state{}
+
+class Error_logout extends layout_state{
+  String error;
+  Error_logout(this.error);
+}

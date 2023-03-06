@@ -46,7 +46,7 @@ class favorite extends StatelessWidget {
                       child: ListView.separated(
                         shrinkWrap: true,
                           physics: BouncingScrollPhysics(),
-                          itemBuilder: (context,index)=> favcell(fav[index],context,index),
+                          itemBuilder: (context,index)=> favcell(fav[index],context,fav[index]['expert_id']),
                           separatorBuilder:(context,index)=>SizedBox() ,
                           itemCount: fav.length),
                     ),

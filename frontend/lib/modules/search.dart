@@ -158,7 +158,7 @@ Widget Search() {
                   builder: (context)=>(cubit.get(context).color1)?Container(height: height/1.9,
                     child: ListView.separated(
                         shrinkWrap: true,
-                        itemBuilder: (context,index)=>Searchcell(Searchexpert[index]),
+                        itemBuilder: (context,index)=>Searchcell(context,Searchexpert[index],index),
                         separatorBuilder: (context,index)=>SizedBox(height: 5,),
                         itemCount: Searchexpert.length),
                   ): Container(

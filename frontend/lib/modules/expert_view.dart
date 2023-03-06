@@ -103,9 +103,6 @@ class _ExperprofileState extends State<Expert_view> {
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(width: 1, color: Colors.grey),
                                     ),
-                                    child: Center(
-                                        child: Icon(Icons.whatsapp, color: Colors.blueGrey[400],)
-                                    ),
                                   ),
 
 

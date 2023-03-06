@@ -13,7 +13,6 @@ class dio_helper{
             headers: {
               'Accept':'application/json',
               'Content-Type':'application/json'
-
             }
         )
     );
@@ -21,7 +20,7 @@ class dio_helper{
 
   static Future<Response>postData({
     required String url,
-    required Map<String,dynamic>data,
+    Map<String,dynamic>?data,
     String?token,
     Map<String,dynamic>?query,
 
@@ -32,7 +31,7 @@ class dio_helper{
       'Authorization':token,
     };
     return await dio!.post(
-      url,
+      url,//'api/${url}'
       data: data,
       queryParameters: query,
     );
@@ -107,10 +106,9 @@ class dio_helper{
 
   static Future<Response>delete({
     required String url,
-    required Map<String,dynamic>data,
+    Map<String,dynamic>?data,
     String?token,
     Map<String,dynamic>?query,
-
   }) async {
     dio!.options.headers={
       'Accept':'application/json',

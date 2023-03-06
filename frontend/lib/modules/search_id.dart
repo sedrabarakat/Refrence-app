@@ -46,7 +46,7 @@ Widget search_id(id)  {
                     condition:State is !Loading_id_state ,
                     builder: (context)=>ListView.separated(
                         shrinkWrap: true,
-                     itemBuilder: (context,index)=>by_idcell(last[index]),
+                     itemBuilder: (context,index)=>by_idcell(last[index],context),
                     separatorBuilder: (context,index)=>SizedBox(height: 5,),
                     itemCount: last.length),
                     fallback: (context)=>Center(child:Lottie.asset('assets/animation/search-users.json'))

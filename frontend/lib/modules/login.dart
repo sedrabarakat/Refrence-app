@@ -181,7 +181,8 @@ class login extends StatelessWidget {
                             ),
                             child: ConditionalBuilder(
                               condition: State is! Loading_login_state ,
-                              builder: (context)=>ElevatedButton(onPressed: (){
+                              builder: (context)=>ElevatedButton(
+                                onPressed: (){
                                 if(formkey.currentState!.validate()){
                                   cubit.get(context).login_post(
                                       email: emailcontroller.text,

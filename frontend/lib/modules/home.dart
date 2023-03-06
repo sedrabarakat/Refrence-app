@@ -57,7 +57,7 @@ class home extends StatelessWidget {
                   child: ListView.separated(
                       shrinkWrap: true,
                       physics: BouncingScrollPhysics(),
-                      itemBuilder: (context,index)=> cell(expertlist![index]['normal_user']),
+                      itemBuilder: (context,index)=> cell(expertlist![index]['normal_user'],context,expertlist![index]['expert_id']),
                       separatorBuilder:(context,index)=>SizedBox() ,
                       itemCount: expertlist.length),
                 ),

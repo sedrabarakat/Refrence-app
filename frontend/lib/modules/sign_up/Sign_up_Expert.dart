@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/shared/components/constatnt.dart';
 import 'package:frontend/shared/network/remote/dio_helper.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import '../../layouts/main_page/main_page/cubit_main_page.dart';
 import '../../layouts/main_page/main_page/main_page.dart';
 import '../../layouts/main_page/main_page/states_mainpage.dart';
@@ -142,7 +143,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.text,
                         cursorColor: Colors.deepPurpleAccent,
@@ -156,7 +157,7 @@ class Sign_up_Expert extends StatelessWidget {
                             return 'your Name is too Long';
                           else return null;
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'First Name',
                             prefixIcon: Icon(
                               Icons.person,
@@ -169,7 +170,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.text,
                         cursorColor: Colors.deepPurpleAccent,
@@ -183,7 +184,7 @@ class Sign_up_Expert extends StatelessWidget {
                             return 'Your Last Name is too Long';
                           else return null;
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'Last name',
                             prefixIcon: Icon(
                               Icons.person,
@@ -197,7 +198,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         cursorColor: Colors.deepPurpleAccent,
@@ -210,7 +211,7 @@ class Sign_up_Expert extends StatelessWidget {
                           else {
                             return null;}
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                           labelText: 'Email',
                           prefixIcon: Icon(
                             Icons.email,
@@ -226,7 +227,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         obscureText: isSecure,
                         keyboardType: TextInputType.visiblePassword,
@@ -240,7 +241,7 @@ class Sign_up_Expert extends StatelessWidget {
                           else
                             return null;
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                           labelText: 'Password',
                           prefixIcon: Icon(
                             Icons.lock,
@@ -258,7 +259,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         controller:phoneController,
                         validator: (value){
@@ -274,7 +275,7 @@ class Sign_up_Expert extends StatelessWidget {
                         },
                         keyboardType: TextInputType.phone,
                         cursorColor: Colors.deepPurpleAccent ,
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'Phone',
                             prefixIcon: Icon(
                               Icons.phone,
@@ -289,7 +290,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.streetAddress,
                         cursorColor: Colors.deepPurpleAccent,
@@ -304,7 +305,7 @@ class Sign_up_Expert extends StatelessWidget {
                           else
                             return null;
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'County',
                             prefixIcon: const Icon(
                               Icons.flag,
@@ -317,7 +318,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.streetAddress,
                         cursorColor: Colors.deepPurpleAccent,
@@ -331,7 +332,7 @@ class Sign_up_Expert extends StatelessWidget {
                             return 'Your Last Name of city is too Long';
                           else return null;
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'City',
                             prefixIcon:const Icon(
                               Icons.location_city,
@@ -344,7 +345,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                         keyboardType: TextInputType.streetAddress,
                         cursorColor: Colors.deepPurpleAccent,
@@ -359,7 +360,7 @@ class Sign_up_Expert extends StatelessWidget {
                           else return null;
 
                         },
-                        decoration: d.copyWith(
+                        decoration: decoration.copyWith(
                             labelText: 'Street',
                             prefixIcon:const Icon(
                               Icons.home_filled,
@@ -372,7 +373,7 @@ class Sign_up_Expert extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                      decoration: msh,
+                      decoration: boxshadow,
                       child: TextFormField(
                           keyboardType: TextInputType.datetime,
                           cursorColor: Colors.deepPurpleAccent,
@@ -388,7 +389,7 @@ class Sign_up_Expert extends StatelessWidget {
 
 
                           },
-                          decoration: d.copyWith(
+                          decoration: decoration.copyWith(
                             prefixIcon: const Icon(
                               Icons.access_time_filled,
                               color: Colors.deepPurple,
@@ -446,7 +447,11 @@ class Sign_up_Expert extends StatelessWidget {
                         fallback: (context)=>CircularProgressIndicator(strokeWidth: 3,color: Colors.deepPurple,backgroundColor: Colors.purple[300],),
                       )
                   ),
+                  /*
                   const SizedBox(height: 20,),
+                  InternationalPhoneNumberInput(
+                    onInputChanged: (value){},
+                  )*/
                 ],),
               ),
             )

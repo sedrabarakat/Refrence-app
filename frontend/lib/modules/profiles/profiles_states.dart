@@ -113,4 +113,14 @@ class Error_Removeexperience_state extends profile_state{
   Error_Removeexperience_state(this.error);
 }
 
+class Loading_addFreetime_state extends profile_state{
+
+}
+class Success_addFreetime_state extends profile_state{
+
+}
+class Error_addFreetime_state extends profile_state{
+  String error;
+  Error_addFreetime_state(this.error);
+}
 
